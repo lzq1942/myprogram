@@ -22,10 +22,11 @@ public class GradeService {
 
     //查询成绩
     public List findGradeList(){
-        String hql="from Grade";
-        //String hql = "from Grade g inner join g.g";
+        String hql = "from Grade g left join g.stu s order by s.sname";
         return gradeDao.findGradeList(hql);
     }
+
+
 
     //获取成绩id
     public Grade getGradeById(int gno){

@@ -2,12 +2,14 @@ package com.myprogram.dao;
 
 import com.myprogram.entity.Grade;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2018/1/19 0019.
  */
+@Transactional
 @Repository("gradeDao")
 public class GradeDao extends BaseDao {
     //添加成绩
@@ -22,7 +24,7 @@ public class GradeDao extends BaseDao {
     }
 
     //查询成绩
-    public List<Grade> findGradeList(String hql){
+    public List findGradeList(String hql){
         try {
             return getSession().createQuery(hql).list();
         }catch (Exception e){
@@ -30,6 +32,7 @@ public class GradeDao extends BaseDao {
         }
         return null;
     }
+
 
 
     //获取成绩id

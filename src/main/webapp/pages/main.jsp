@@ -32,7 +32,7 @@
         <div class="layui-logo">学生管理系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">关于学校</a></li>
+            <li class="layui-nav-item"><a href="javascript:;toschooleInfo();">关于学校</a></li>
             <li class="layui-nav-item"><a href="">公告</a></li>
             <li class="layui-nav-item"><a href="">我的异议</a></li>
             <li class="layui-nav-item">
@@ -123,7 +123,7 @@
 
     //跳转到成绩管理页面
     function toGrade(){
-        $("#myiframe").attr("src","${pageContext.request.contextPath}/pages/Grade.jsp");
+        $("#myiframe").attr("src","${pageContext.request.contextPath}/gradeAction/findGradeList");
     }
 
     //跳转到添加成绩页面
@@ -134,6 +134,11 @@
     //跳转到奖励页面
     function toReward(){
         $("#myiframe").attr("src","${pageContext.request.contextPath}/pages/Reward.jsp");
+    }
+
+    //跳转到关于学校信息页面
+    function toschooleInfo(){
+        $("#myiframe").attr("src","${pageContext.request.contextPath}/pages/schooleInfo.jsp");
     }
 
 </script>

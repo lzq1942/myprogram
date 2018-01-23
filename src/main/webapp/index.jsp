@@ -81,6 +81,7 @@
     <div class="loginbm">博学笃志，德才兼备</div>
 </body>
 <script type="text/javascript">
+
     $("input[type='button']").click(function(){
         if(!$("input[name='uname']").val() || !$("input[name='upwd']").val()){
             $("#mySpan").text("账号或密码不能为空");
@@ -103,5 +104,13 @@
     <c:if test="${param.rtype==1}">
         alert("注册成功");
     </c:if>
+
+    $(document).keyup(function(event){
+        if(event.keyCode == 13){
+            //模拟点击登陆按钮，触发上面的 Click 事件
+            $("input[type='button']").click();
+        }
+    });
+
 </script>
 </html>

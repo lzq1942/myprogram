@@ -30,7 +30,13 @@
         入学时间：<input name="stime" /><br />
         电话号码：<input name="sphone"/><br />
         选择图片：<input type="file" name="sfile"/><br/>
-
+        选择班级：<select name="cls.cno">
+                    <option value="">请选择班级</option>
+                    <c:forEach items="${requestScope.clsList}" var="o" varStatus="ids">
+                    <option value="${o.cno}">${o.cname}</option>
+                    </c:forEach>
+                  </select>
+        <br/>
         <input type="submit" value="添加学生">
     </form>
 </body>

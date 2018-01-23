@@ -3,6 +3,11 @@ package com.myprogram.web;
 import com.myprogram.entity.Stu;
 import com.myprogram.service.ClsService;
 import com.myprogram.service.StuService;
+import org.apache.commons.io.FileUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -76,6 +81,27 @@ public class StuAction {
             }
         }
         return "redirect:/pages/AddStu.jsp";
+    }
+
+
+    //文件下载
+    @RequestMapping("/downloadFile")
+    public ResponseEntity<byte[]> downloadFile(String fileName, HttpSession session) throws Exception {
+        if(fileName!=null){
+            //获取要下载的文件路径
+            String basePath=session.getServletContext().getRealPath("/images");
+            String filePath=basePath+"/"+fileName;
+            File outFile=new File(filePath);
+            if(outFile.exists()){//要下载的文件是存在的
+                HttpHeaders headers=new HttpHeaders();//构建一个头文件对象
+                //设置文件以下载方式打开
+                headers.setContentDispositionFormData("attachment", new String(fileName.getBytes("UTF-8"),"iso-8859-1"));
+                //设置文件类型
+                headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(new File(filePath)),headers, HttpStatus.OK);
+            }
+        }
+        return null;
     }
 
     //查询学生

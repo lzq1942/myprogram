@@ -4,6 +4,7 @@ import com.myprogram.entity.Grade;
 import com.myprogram.service.GradeService;
 import com.myprogram.service.StuService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,8 +49,9 @@ public class GradeAction {
 
     //查询学生成绩的方法
     @RequestMapping("/findGradeList")
-    public String findGradeList(ModelMap map){
-        map.addAttribute("gradeList",gradeService.findGradeList());
+    public String findGradeList(Model mod){
+        mod.addAttribute("gradeList",gradeService.findGradeList());
+        mod.addAttribute("stuList",stuService.findStuList());
         return "pages/Grade";
     }
 
@@ -75,4 +77,10 @@ public class GradeAction {
     public void setStuService(StuService stuService) {
         this.stuService = stuService;
     }
+
+    public void setGradeService(GradeService gradeService) {
+        this.gradeService = gradeService;
+    }
+
+
 }

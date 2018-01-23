@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name="tb_grade")
 public class Grade {
     private int gno;
-    private String gname;
     private int gchinese;//语文
     private int gmath;//数学
     private int genglish;//英语
@@ -24,9 +23,8 @@ public class Grade {
     public Grade() {
     }
 
-    public Grade(int gno, String gname, int gchinese, int gmath, int genglish, int gphysical, int pchemistry, int pbiology) {
+    public Grade(int gno, int gchinese, int gmath, int genglish, int gphysical, int pchemistry, int pbiology) {
         this.gno = gno;
-        this.gname = gname;
         this.gchinese = gchinese;
         this.gmath = gmath;
         this.genglish = genglish;
@@ -35,9 +33,8 @@ public class Grade {
         this.pbiology = pbiology;
     }
 
-    public Grade(int gno, String gname, int gchinese, int gmath, int genglish, int gphysical, int pchemistry, int pbiology, Stu stu) {
+    public Grade(int gno, int gchinese, int gmath, int genglish, int gphysical, int pchemistry, int pbiology, Stu stu) {
         this.gno = gno;
-        this.gname = gname;
         this.gchinese = gchinese;
         this.gmath = gmath;
         this.genglish = genglish;
@@ -55,14 +52,6 @@ public class Grade {
 
     public void setGno(int gno) {
         this.gno = gno;
-    }
-
-    public String getGname() {
-        return gname;
-    }
-
-    public void setGname(String gname) {
-        this.gname = gname;
     }
 
     public int getGchinese() {
